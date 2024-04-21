@@ -1,4 +1,5 @@
 import os
+import client
 
 def connectToClient():
   pass
