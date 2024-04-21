@@ -1,23 +1,38 @@
 import http
+import socket
+import threading
 import socketserver   
+import sys
 from http import HTTPStatus
 from http import HTTPMethod
 
-class server {
-  def _init_(self, ip, port):
-    self.ip = ip
-    self.port = port
-  unreadPackets = []
-}
-server = server(0.0.0.0, 1)
+HEADER = 64
+PORT = 5050
+SERVER = socket.gethostbyname(socket.gethostname)
+ADDR = (SERVER, PORT)
+FORMAT = 'utf-8'
+DISCONECT_MESSAGE = "!disconnect"
 
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(ADDR)
 
-def send(ip, data):
-  pass
+def handle_client(conn, addr):
+  print(f"[NEW CONNECTION] {addr} connected")
+  connected = True
+  while connected:
+    msg_length = conn.recv(HEADER).decode(FORMAT)
+    msg_length = int(message_length)
+    msg = conn.recv(msg_length).decode(FORMAT)
+    if msg == DISCONECT_MESSAGE:
+      connected = False
+    print(f"[{addr}] {msg}")
+  conn.close()
 
-def receve():
-  if server.unreadPackets > 0:
-    pass
-
-while True:
-  receve()
+def start():
+  server.listen()
+  while True:
+    conn, addr = server.accept()
+    thread = threading.Thread(target=handle_client(), args=(conn, addr))
+    thread.start()
+    print(f"[ACTIVE CONNECTIONS] {threading.activeCount() - 1}")
+start()
