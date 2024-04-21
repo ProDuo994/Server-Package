@@ -1,4 +1,5 @@
 CREATE DATABASE queries;
 CREATE TABLE querieList (
-  ipadress, char
+  ipadress char,
+  dataInQuerie char,
 );
