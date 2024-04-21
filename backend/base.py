@@ -1,8 +1,13 @@
 import os
 import client
 
-def connectToClient():
+clientIDs = []
+
+def addNewClient():
+  pass
+
+def connectToClient(clientID):
   pass
 
 def onRun():
-  connectToClient()
+  connectToClient(1)
