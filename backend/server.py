@@ -8,7 +8,7 @@ from http import HTTPMethod
 
 HEADER = 64
 PORT = 5050
-SERVER = socket.gethostbyname(socket.gethostname)
+SERVER = socket.gethostbyname(socket.gethostname())
 ADDR = (SERVER, PORT)
 FORMAT = 'utf-8'
 DISCONECT_MESSAGE = "!disconnect"
@@ -21,11 +21,12 @@ def handle_client(conn, addr):
   connected = True
   while connected:
     msg_length = conn.recv(HEADER).decode(FORMAT)
-    msg_length = int(message_length)
-    msg = conn.recv(msg_length).decode(FORMAT)
-    if msg == DISCONECT_MESSAGE:
-      connected = False
-    print(f"[{addr}] {msg}")
+    if msg_length:
+      msg_length = int(message_length)
+      msg = conn.recv(msg_length).decode(FORMAT)
+      if msg == DISCONECT_MESSAGE:
+        connected = False
+      print(f"[{addr}] {msg}")
   conn.close()
 
 def start():
