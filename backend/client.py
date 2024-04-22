@@ -26,6 +26,9 @@ class client:
   def getHistory()
     print(log)
 
+def login(ip):
+  pass
+
 def createAccount(ip):
   accounts.append(str(ip))
 
@@ -36,6 +39,6 @@ currentClient = client(socket.gethostname(), "online")
 def onConnect():
   for x in len(accounts):
     if accounts[i] == client.ip:
-      
+      login(socket.gethostname())
     else:
-      createAccount()
+      createAccount(socket.gethostname())
