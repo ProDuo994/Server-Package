@@ -13,14 +13,16 @@ class client:
     self.ip = ip
     self.status = status
 
-  def remove():
-    pass
+  def delete():
+    del client
 
   def send(addr, format, port, msg):
-    log.append("Sent " + msg + " to " + ip)
+    message = ("Sent " + msg + " to " + ip)
+    messageId = 1
+    log.insert(messageId, message)
 
   def getHistory()
-    pass
+    print(log)
 
 def onConnect():
   pass
