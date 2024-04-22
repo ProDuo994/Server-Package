@@ -5,6 +5,7 @@ import socketserver
 import sys
 from http import HTTPStatus
 from http import HTTPMethod
+import ./client.py
 
 HEADER = 64
 PORT = 5050
