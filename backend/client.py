@@ -27,4 +27,4 @@ def onConnect():
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(ADDR)
-currentClient = client("192.168.68.1", "online")
+currentClient = client(socket.gethostname(), "online")
