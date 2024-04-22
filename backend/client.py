@@ -7,6 +7,8 @@ DISCONNECT_MESSAGE = "!disconnect"
 SERVER = "192.168.68.1"
 ADDR = (SERVER, PORT)
 
+accounts = {}
+
 class client:
   log = {}
   def _init_(self, ip, status):
@@ -24,9 +26,16 @@ class client:
   def getHistory()
     print(log)
 
-def onConnect():
-  pass
+def createAccount(ip):
+  accounts.append(str(ip))
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(ADDR)
 currentClient = client(socket.gethostname(), "online")
+
+def onConnect():
+  for x in len(accounts):
+    if accounts[i] == client.ip:
+      
+    else:
+      createAccount()
